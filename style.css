@@ -137,7 +137,7 @@ input {
   user-select: none;
 }
 
-button {
+.addBtn {
   cursor: pointer;
   text-decoration: none;
   user-select: none;
@@ -181,4 +181,32 @@ button:is(:hover, :focus) {
 
 .todo-list li.checked::before {
   background-image: url(images/checked.png);
+}
+
+.edit {
+  position: absolute;
+  right: 1.6rem;
+  top: 0;
+  padding: 0 .3rem 0 .4rem;
+  font-size: 0.875rem;
+}
+
+.edit:hover {
+  background-color: var(--clr-primary-400);
+  border-radius: 1.5rem;
+  color: white;
+}
+
+.close {
+  position: absolute;
+  right: 0.3rem;
+  top: 0;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+}
+
+.close:hover {
+  background-color: var(--clr-primary-400);
+  border-radius: 0.8rem;
+  color: white;
 }

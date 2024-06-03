@@ -10,6 +10,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -21,13 +25,9 @@
           <h2>All tasks</h2>
           <div class="input-box">
             <input type="text" id="input" placeholder="New task" />
-            <button class="button" onclick="addTask()">Add</button>
+            <button class="addBtn" onclick="addTask()">Add</button>
           </div>
-          <ul class="todo-list" id="todo-list">
-            <li class="checked">Task 1</li>
-            <li>Task 2</li>
-            <li>Task 3</li>
-          </ul>
+          <ul class="todo-list" id="todo-list"></ul>
         </div>
       </div>
     </main>
