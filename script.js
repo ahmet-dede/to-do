@@ -1,74 +1,81 @@
-let inputBox = document.getElementById("input");
-let toDoList = document.getElementById("todo-list");
+// Variables
 
-/* const tasks = [{ id: "listItem", checked: "true" }];
+let input = document.getElementById("input");
+let button = document.getElementById("addBtn");
+let todoList = document.getElementById("todo-list");
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-for (i = 0; i < tasks.length; i++) {
-  tasks[i] = addTask();
-} */
+// Functions
 
-function addTask() {
-  if (inputBox.value === "") {
-    alert("You must write something!");
-  } else {
-    let li = document.createElement("li");
-    li.innerHTML = inputBox.value;
-    toDoList.appendChild(li);
+todos.forEach((todo) => {
+  addTask(todo);
+});
 
-    // Create an edit button and append it to the list item
-    let editSpan = document.createElement("SPAN");
-    let editBtn = document.createElement("i");
-    editBtn.className = "fa fa-edit";
-    editSpan.className = "edit";
-    editSpan.appendChild(editBtn);
-    li.appendChild(editSpan);
+function addTask(todo) {
+  let li = document.createElement("li");
 
-    // Create a close button and append it to the list item
-    let closeSpan = document.createElement("SPAN");
-    let closeTxt = document.createTextNode("\u00D7");
-    closeSpan.className = "close";
-    closeSpan.appendChild(closeTxt);
-    li.appendChild(closeSpan);
+  let todoTextSpan = document.createElement("span");
+  todoTextSpan.innerText = todo;
+  li.appendChild(todoTextSpan);
+
+  let editSpan = document.createElement("SPAN");
+  let editButton = document.createElement("i");
+  editButton.className = "fa fa-edit";
+  editSpan.className = "edit";
+  editSpan.appendChild(editButton);
+  li.appendChild(editSpan);
+
+  let deleteSpan = document.createElement("SPAN");
+  let deleteButton = document.createTextNode("\u00D7");
+  deleteSpan.className = "delete";
+  deleteSpan.appendChild(deleteButton);
+  li.appendChild(deleteSpan);
+
+  todoList.appendChild(li);
+
+  let listItems = Array.from(todoList.getElementsByTagName("li"));
+  for (let i = 0; i < listItems.length; i++) {
+    let todoTextSpan = listItems[i].getElementsByTagName("span")[0];
   }
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function () {
-      var div = this.parentElement;
-      div.style.display = "none";
-    };
-  }
-}
+  // Event Listeners
 
-//checks whether the list item is checked or not
+  button.addEventListener("click", () => {
+    if (input.value === "") {
+      alert("You must write something!");
+    } else {
+      let todo = input.value;
+      todos.push(todo);
+      localStorage.setItem("todos", JSON.stringify(todos));
+      addTask(todo);
+      input.value = "";
+    }
+  });
 
-var list = document.querySelector("ul");
-list.addEventListener(
-  "click",
-  function (ev) {
+  editSpan.addEventListener("click", () => {
+    let newValue = prompt("Edit your todo", todoTextSpan.innerText);
+    if (newValue) {
+      let index = todos.indexOf(todo);
+      if (index > -1) {
+        todos[index] = newValue;
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
+      todoTextSpan.innerText = newValue;
+    }
+  });
+
+  deleteSpan.addEventListener("click", () => {
+    let index = todos.indexOf(todo);
+    if (index > -1) {
+      todos.splice(index, 1);
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+    li.remove();
+  });
+
+  todoList.addEventListener("click", (ev) => {
     if (ev.target.tagName === "LI") {
       ev.target.classList.toggle("checked");
     }
-  },
-  false
-);
-
-//adds a close button at the end of the list item
-
-var closeBtn = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < closeBtn.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  closeBtn[i].appendChild(span);
-}
-
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function () {
-    var div = this.parentElement;
-    div.style.display = "none";
-  };
+  });
 }

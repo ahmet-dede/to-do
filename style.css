@@ -75,7 +75,7 @@ li {
 body {
   font-family: var(--ff-base);
   font-weight: var(--fw-regular);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--clr-neutral-400);
   background-color: var(--clr-secondary-200);
   display: grid;
@@ -137,7 +137,7 @@ input {
   user-select: none;
 }
 
-.addBtn {
+#addBtn {
   cursor: pointer;
   text-decoration: none;
   user-select: none;
@@ -169,7 +169,7 @@ button:is(:hover, :focus) {
   width: 1.1rem;
   border-radius: 50%;
   background-size: cover;
-  top: 0.2rem;
+  top: 0.4rem;
   left: 0.2rem;
   background-image: url(images/unchecked.png);
 }
@@ -185,10 +185,10 @@ button:is(:hover, :focus) {
 
 .edit {
   position: absolute;
-  right: 1.6rem;
+  right: 1.8rem;
   top: 0;
-  padding: 0 .3rem 0 .4rem;
-  font-size: 0.875rem;
+  padding: 0 0.3rem 0 0.4rem;
+  font-size: 1rem;
 }
 
 .edit:hover {
@@ -197,15 +197,15 @@ button:is(:hover, :focus) {
   color: white;
 }
 
-.close {
+.delete {
   position: absolute;
   right: 0.3rem;
   top: 0;
   padding: 0 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
-.close:hover {
+.delete:hover {
   background-color: var(--clr-primary-400);
   border-radius: 0.8rem;
   color: white;
