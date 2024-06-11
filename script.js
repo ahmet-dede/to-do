@@ -35,7 +35,7 @@ function addTask(todo) {
   editSpan.addEventListener("click", () => {
     let newValue = prompt("Edit your todo", todoTextSpan.innerText);
     if (newValue) {
-      let index = todos.indexOf(todo);
+      let index = todos.indexOf(todoTextSpan.innerText);
       if (index > -1) {
         todos[index] = newValue;
         localStorage.setItem("todos", JSON.stringify(todos));
@@ -45,7 +45,7 @@ function addTask(todo) {
   });
 
   deleteSpan.addEventListener("click", () => {
-    let index = todos.indexOf(todo);
+    let index = todos.indexOf(todoTextSpan.innerText);
     if (index > -1) {
       todos.splice(index, 1);
       localStorage.setItem("todos", JSON.stringify(todos));
